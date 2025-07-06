@@ -22,6 +22,11 @@ mod tests {
         // 20! is 2432902008176640000, which is too large to fit in a u32
         // With the default dev profile, this will panic when you run `cargo test`
         // We want it to wrap around instead
+
+        // The result of 20! in u32 is 2_192_834_560, which is the maximum value
+        // that can be represented in u32 before it overflows.
+        // This is because 20! = 2432902008176640000, and
+
         assert_eq!(factorial(20), 2_192_834_560);
         //                           ☝️
         // A large number literal using underscores to improve readability!
