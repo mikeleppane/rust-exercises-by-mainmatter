@@ -2,9 +2,13 @@
 //  to get the code to compile.
 
 pub fn summary(ticket: Ticket) -> (Ticket, Summary) {
-    (ticket, ticket.summary())
+    (ticket.clone(), ticket.summary())
 }
 
+// Define a `Ticket` struct with fields `title`, `description`, and `status`.
+// Implement a method `summary` for `Ticket` that returns a `Summary` struct
+//  containing the `title` and `status` of the ticket.
+#[derive(Debug, Clone)]
 pub struct Ticket {
     pub title: String,
     pub description: String,
