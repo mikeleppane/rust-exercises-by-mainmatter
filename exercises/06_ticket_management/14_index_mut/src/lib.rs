@@ -9,6 +9,31 @@ pub struct TicketStore {
     counter: u64,
 }
 
+impl TicketStore {
+    pub fn iter(&self) -> std::slice::Iter<Ticket> {
+        self.tickets.iter()
+    }
+}
+
+use std::ops::IndexMut;
+impl IndexMut<TicketId> for TicketStore {
+    fn index_mut(&mut self, index: TicketId) -> &mut Self::Output {
+        self.tickets
+            .iter_mut()
+            .find(|ticket| ticket.id == index)
+            .unwrap()
+    }
+}
+
+impl IndexMut<&TicketId> for TicketStore {
+    fn index_mut(&mut self, index: &TicketId) -> &mut Self::Output {
+        self.tickets
+            .iter_mut()
+            .find(|ticket| ticket.id == *index)
+            .unwrap()
+    }
+}
+
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct TicketId(u64);
 
