@@ -7,14 +7,6 @@
 // The library target should be named `packages`.
 //   The function `hello_world` should print "Hello, world!" to the console.
 
-// Import the `hello_world` function from the `packages` library.
-//   Make sure to use the correct path to the library target.
-
-mod packages;
-
-use packages::hello_world;
-
-// This is the entrypoint of the binary.
-fn main() {
-    hello_world();
+pub fn hello_world() {
+    println!("Hello, world!");
 }
